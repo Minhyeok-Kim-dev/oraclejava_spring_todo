@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration 
+	PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<!-- Bean Class와 Mapper에서 사용될 Alias Mapping -->
+		<typeAlias type="kr.co.oraclejava.Todo" alias="Todo"/>
+	</typeAliases>
+</configuration>

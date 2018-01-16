@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper 
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.oraclejava.todo">
+	<select id="list" resultType="Todo">
+		SELECT id, name, comm, completed, updated_at AS updateAt
+		  FROM todo
+		 ORDER BY updated_at DESC
+	</select>
+	<select id="select" parameterType="int" resultType="Todo">
+		SELECT id, name, comm, completed, updated_at AS updateAt
+		  FROM todo
+		 WHERE 1 = 1
+		   AND id = #{id}
+		 ORDER BY updated_at DESC
+	</select>
+	<insert id="insert" parameterType="Todo">
+		INSERT INTO todo (
+			id, name, comm, completed
+		)
+		VALUES (
+			todo_seq.nextval, #{name}, #{comm}, '0'
+		)
+	</insert>
+	<update id="update" parameterType="Todo">
+		UPDATE todo
+		   SET name = #{name}
+		   	 , comm = #{comm}
+		   	 , completed = #{completed}
+		 WHERE 1 = 1
+		   AND id = #{id}
+	</update>
+	<update id="complete" parameterType="int">
+		UPDATE todo
+		   SET completed = '1'
+		 WHERE 1 = 1
+		   AND id = #{id}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM todo
+		 WHERE 1 = 1
+		   AND id = #{id}
+	</delete>
+</mapper>
